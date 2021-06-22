@@ -30,7 +30,6 @@ public class PetController {
     public PetDTO savePet(@RequestBody PetDTO petDTO) {
         if(petDTO.getOwnerId()==0L)
             throw new CustomerNotFoundException("ownerId field is missing in request body.");
-        System.out.println("====== <<<<< "+petDTO);
         Pet pet = convertPetDTOToPet(petDTO);
         return convertPetToPetDTO(petService.save(pet, petDTO.getOwnerId()));
     }
